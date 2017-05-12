@@ -9,12 +9,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class CartApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
+  @Test
+  public void contextLoads() {
+  }
 
-	@Test
-	public void testHome() throws Exception {
-		assertThat(1).isEqualTo(1);
-	}
+  @Test
+  public void testHome() throws Exception {
+    assert 1 == 1;
+  }
 }

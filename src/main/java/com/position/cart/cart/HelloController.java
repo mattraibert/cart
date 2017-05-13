@@ -1,11 +1,9 @@
 package com.position.cart.cart;
 
+import com.google.common.collect.Iterables;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @RestController
 public class HelloController {
@@ -21,7 +19,6 @@ public class HelloController {
 
   @RequestMapping("/")
   public String index() {
-    Stream<Customer> customerStream = customerRepository.findAll().stream();
-    return String.join("<hr />", customerStream.map(Customer::toString).collect(Collectors.toList()));
+    return String.join("<hr />", Iterables.transform(customerRepository.findAll(), Customer::toString));
   }
 }

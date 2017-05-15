@@ -1,4 +1,4 @@
-package com.position.cart.cart;
+package com.position.cart;
 
 import com.google.common.collect.Iterables;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +12,9 @@ public class HelloController {
   private
   CustomerRepository customerRepository;
 
-  @RequestMapping("/admin")
+  @RequestMapping("/hello")
   public String admin() {
-    return "admin";
+    return "Greetings from Spring Boot!";
   }
 
   @RequestMapping("/")

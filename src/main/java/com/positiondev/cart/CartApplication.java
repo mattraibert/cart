@@ -1,4 +1,4 @@
-package com.position.cart;
+package com.positiondev.cart;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

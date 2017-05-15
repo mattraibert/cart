@@ -1,4 +1,4 @@
-package com.position.cart;
+package com.positiondev.cart;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

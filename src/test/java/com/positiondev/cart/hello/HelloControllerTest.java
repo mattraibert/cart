@@ -1,4 +1,4 @@
-package com.position.cart.hello;
+package com.positiondev.cart.hello;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

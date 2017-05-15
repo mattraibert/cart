@@ -1,5 +1,7 @@
 package com.positiondev.cart;
 
+import com.positiondev.cart.customer.Customer;
+import com.positiondev.cart.customer.CustomerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

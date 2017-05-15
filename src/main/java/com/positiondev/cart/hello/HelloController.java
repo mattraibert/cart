@@ -1,8 +1,8 @@
 package com.positiondev.cart.hello;
 
 import com.google.common.collect.Iterables;
-import com.positiondev.cart.Customer;
-import com.positiondev.cart.CustomerRepository;
+import com.positiondev.cart.customer.Customer;
+import com.positiondev.cart.customer.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

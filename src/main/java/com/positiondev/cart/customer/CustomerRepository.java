@@ -1,4 +1,4 @@
-package com.positiondev.cart;
+package com.positiondev.cart.customer;
 
 import org.springframework.data.repository.CrudRepository;
 

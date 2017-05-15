@@ -4,6 +4,7 @@ import com.positiondev.cart.customer.Customer;
 import com.positiondev.cart.customer.CustomerRepository;
 import com.positiondev.cart.product.Product;
 import com.positiondev.cart.product.ProductRepository;
+import com.positiondev.cart.util.PersistableMoney;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -53,8 +54,10 @@ public class CartApplication {
       }
       log.info("");
 
-      productRepository.save(new Product("Carlisle Story", "The greated story ever about a turtle in a swimming pool"));
+      Product product = new Product("Carlisle Story",
+          "The greated story ever about a turtle in a swimming pool",
+          PersistableMoney.of(9.98, "USD"));
+      productRepository.save(product);
     };
   }
-
 }

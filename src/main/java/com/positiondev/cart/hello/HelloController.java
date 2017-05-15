@@ -1,26 +1,33 @@
 package com.positiondev.cart.hello;
 
-import com.google.common.collect.Iterables;
-import com.positiondev.cart.customer.Customer;
-import com.positiondev.cart.customer.CustomerRepository;
+import com.positiondev.cart.product.Product;
+import com.positiondev.cart.product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class HelloController {
 
   @Autowired
   private
-  CustomerRepository customerRepository;
+  ProductRepository productRepository;
 
   @RequestMapping("/hello")
   public String admin() {
     return "Greetings from Spring Boot!";
   }
 
-  @RequestMapping("/")
-  public String index() {
-    return String.join("<hr />", Iterables.transform(customerRepository.findAll(), Customer::toString));
+  @RequestMapping("/products")
+  public List<Product> index() {
+    return productRepository.findAll();
+  }
+
+  @RequestMapping("/products/{id}")
+  public Product product(@PathVariable("id") Product product) {
+    return product;
   }
 }

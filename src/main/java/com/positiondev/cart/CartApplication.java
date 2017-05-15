@@ -2,6 +2,8 @@ package com.positiondev.cart;
 
 import com.positiondev.cart.customer.Customer;
 import com.positiondev.cart.customer.CustomerRepository;
+import com.positiondev.cart.product.Product;
+import com.positiondev.cart.product.ProductRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -19,7 +21,7 @@ public class CartApplication {
   }
 
   @Bean
-  public CommandLineRunner demo(CustomerRepository repository) {
+  public CommandLineRunner demo(CustomerRepository repository, ProductRepository productRepository) {
     return (args) -> {
       // save a couple of customers
       repository.save(new Customer("Jack", "Bauer"));
@@ -50,6 +52,8 @@ public class CartApplication {
         log.info(bauer.toString());
       }
       log.info("");
+
+      productRepository.save(new Product("Carlisle Story", "The greated story ever about a turtle in a swimming pool"));
     };
   }
 

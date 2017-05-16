@@ -20,6 +20,11 @@ public class ProductController {
     return productRepository.findAll();
   }
 
+  @GetMapping("/{id}.json")
+  public Product productjson(@PathVariable("id") Product product) {
+    return product;
+  }
+
   @GetMapping("/{id}")
   public Product product(@PathVariable("id") Product product) {
     return product;

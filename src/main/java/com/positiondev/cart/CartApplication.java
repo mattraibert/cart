@@ -1,5 +1,7 @@
 package com.positiondev.cart;
 
+import com.positiondev.cart.cart.Cart;
+import com.positiondev.cart.cart.CartRepository;
 import com.positiondev.cart.customer.Customer;
 import com.positiondev.cart.customer.CustomerRepository;
 import com.positiondev.cart.product.Product;
@@ -22,7 +24,7 @@ public class CartApplication {
   }
 
   @Bean
-  public CommandLineRunner demo(CustomerRepository repository, ProductRepository productRepository) {
+  public CommandLineRunner demo(CustomerRepository repository, ProductRepository productRepository, CartRepository cartRepository) {
     return (args) -> {
       // save a couple of customers
       repository.save(new Customer("Jack", "Bauer"));
@@ -31,33 +33,12 @@ public class CartApplication {
       repository.save(new Customer("David", "Palmer"));
       repository.save(new Customer("Michelle", "Dessler"));
 
-      // fetch all customers
-      log.info("Customers found with findAll():");
-      log.info("-------------------------------");
-      for (Customer customer : repository.findAll()) {
-        log.info(customer.toString());
-      }
-      log.info("");
+      productRepository.save(new Product("Carlisle Story", "The greated story ever about a turtle in a swimming pool", PersistableMoney.of(9.98, "USD")));
+      productRepository.save(new Product("Argle Story", "Not another bargle bargle foobar", PersistableMoney.of(19.88, "USD")));
+      productRepository.save(new Product("A Spring", "Spring does some things", PersistableMoney.of(9.98, "USD")));
 
-      // fetch an individual customer by ID
-      Customer customer = repository.findOne(1L);
-      log.info("Customer found with findOne(1L):");
-      log.info("--------------------------------");
-      log.info(customer.toString());
-      log.info("");
 
-      // fetch customers by last name
-      log.info("Customer found with findByLastName('Bauer'):");
-      log.info("--------------------------------------------");
-      for (Customer bauer : repository.findByLastName("Bauer")) {
-        log.info(bauer.toString());
-      }
-      log.info("");
-
-      Product product = new Product("Carlisle Story",
-          "The greated story ever about a turtle in a swimming pool",
-          PersistableMoney.of(9.98, "USD"));
-      productRepository.save(product);
+      cartRepository.save(new Cart());
     };
   }
 }

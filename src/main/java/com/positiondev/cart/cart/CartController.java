@@ -12,8 +12,8 @@ public class CartController {
   @Autowired
   private CartRepository cartController;
 
-  @PostMapping("/{id}/product/{productId}")
-  public RedirectView addProduct(@PathVariable("id") Cart cart, @PathVariable("productId") Product product) {
+  @PostMapping("/{id}")
+  public RedirectView addProduct(@PathVariable("id") Cart cart, @RequestParam(value="productId") Product product) {
     cart.addProduct(product);
     cartController.save(cart);
     return new RedirectView("/carts/" + cart.getId() + ".json");

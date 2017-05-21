@@ -1,0 +1,17 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<h1>Product!</h1>
+<div th:text="${product.title}">A Tale of Two Cities</div>
+<div th:text="${product.description}">A Tale of Two Cities (1859) is a novel by Charles Dickens, set in London and Paris before
+  and during the French Revolution. The novel depicts the plight of the French peasantry demoralized by the French aristocracy in
+  the years leading up to the revolution, the corresponding brutality demonstrated by the revolutionaries toward the former
+  aristocrats in the early years of the revolution, and many unflattering social parallels with life in London during the same
+  period.
+</div>
+<div>
+  <form action="#" method='POST' th:action="@{/carts}">
+    <input type="hidden" name="productId" th:value="${product.id}"/>
+    <input type="submit" value="Add to cart"/>
+  </form>
+</div>
+</html>

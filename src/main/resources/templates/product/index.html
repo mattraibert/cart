@@ -1,0 +1,9 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<ul>
+  <li th:each="product : ${products}">
+    <span th:text="${product.title}">Strawberries</span>
+    <span th:text="${product.price.display}" class="number">23.32</span>
+    <span><a href="../product.html" th:href="@{/products/{id}(id=${product.id})}">Learn more...</a></span>
+  </li>
+</ul>
+</html>

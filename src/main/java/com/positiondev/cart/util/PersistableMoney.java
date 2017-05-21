@@ -20,6 +20,8 @@ public class PersistableMoney implements Serializable {
     this.currency = currency;
   }
 
+  public String getDisplay() {return "$" + amount; }
+
   public BigDecimal getAmount() {
     return amount;
   }

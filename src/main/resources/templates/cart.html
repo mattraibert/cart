@@ -1,0 +1,11 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<h1>Your Cart</h1>
+
+<ul>
+  <li th:each="product : ${cart.products}">
+    <span th:text="${product.title}">Strawberries</span>
+    <span th:text="${product.price.display}" class="number">23.32</span>
+    <span><a href="product.html" th:href="@{/products/{id}(id=${product.id})}">Learn more...</a></span>
+  </li>
+</ul>
+</html>

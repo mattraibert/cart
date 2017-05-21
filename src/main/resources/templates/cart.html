@@ -1,11 +1,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <h1>Your Cart</h1>
 
-<ul>
-  <li th:each="product : ${cart.products}">
-    <span th:text="${product.title}">Strawberries</span>
-    <span th:text="${product.price.display}" class="number">23.32</span>
-    <span><a href="product.html" th:href="@{/products/{id}(id=${product.id})}">Learn more...</a></span>
-  </li>
-</ul>
+<table>
+  <tr th:each="product : ${cart.products}">
+    <td th:text="${product.title}">Strawberries</td>
+    <td th:text="${product.price.display}" class="number">$23.32</td>
+    <td><a href="product.html" th:href="@{/products/{id}(id=${product.id})}">Learn more...</a></td>
+  </tr>
+  <tr th:remove="all">
+    <td>Grapes</td>
+    <td class="number">$3.99</td>
+    <td><a href="product.html">Learn more...</a></td>
+  </tr>
+  <tr><td>Total</td><td th:text="${cart.total.display}">$27.31</td></tr>
+</table>
 </html>

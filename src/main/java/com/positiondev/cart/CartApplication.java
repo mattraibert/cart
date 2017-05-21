@@ -33,10 +33,9 @@ public class CartApplication {
       repository.save(new Customer("David", "Palmer"));
       repository.save(new Customer("Michelle", "Dessler"));
 
-      productRepository.save(new Product("Carlisle Story", "The greated story ever about a turtle in a swimming pool", PersistableMoney.of(9.98, "USD")));
-      productRepository.save(new Product("Argle Story", "Not another bargle bargle foobar", PersistableMoney.of(19.88, "USD")));
-      productRepository.save(new Product("A Spring", "Spring does some things", PersistableMoney.of(9.98, "USD")));
-
+      productRepository.save(new Product("Carlisle Story", "The greated story ever about a turtle in a swimming pool", PersistableMoney.usd(9.98)));
+      productRepository.save(new Product("Argle Story", "Not another bargle bargle foobar", PersistableMoney.usd(19.88)));
+      productRepository.save(new Product("A Spring", "Spring does some things", PersistableMoney.usd(9.98)));
 
       cartRepository.save(new Cart());
     };

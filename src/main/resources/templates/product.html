@@ -9,7 +9,7 @@
   period.
 </div>
 <div>
-  <form action="#" method='POST' th:action="@{/carts/{cartId}(cartId=${cart.id})}">
+  <form action="cart.html" method='POST' th:action="@{/carts/{cartId}(cartId=${cart.id})}">
     <input type="hidden" name="productId" th:value="${product.id}"/>
     <input type="submit" value="Add to cart"/>
   </form>

@@ -1,8 +1,8 @@
 todo
 ----
 
-1. create a new product
-2. show cart total on cart page
+1. show cart total on cart page
+2. create a new product
 3. process cart total through stripe
 4. create new customers
 5. customer can log in

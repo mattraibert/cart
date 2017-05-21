@@ -13,7 +13,7 @@ public class PersistableMoney implements Serializable {
   private String currency;
 
   @SuppressWarnings("unused")
-  private PersistableMoney(){}
+  private PersistableMoney() {}
 
   public PersistableMoney(BigDecimal amount, String currency) {
     this.amount = amount;
@@ -30,11 +30,13 @@ public class PersistableMoney implements Serializable {
     return currency;
   }
 
-  public static PersistableMoney of(double amount, String currency) {
-    return of(new BigDecimal(amount), currency);
+  public static PersistableMoney of(Number amount, String currency) {
+    return of(new BigDecimal(amount.toString()), currency);
   }
 
   private static PersistableMoney of(BigDecimal amount, String currency) {
     return new PersistableMoney(amount, currency);
   }
+
+  public static PersistableMoney usd(Number amount) {return of(amount, "USD");}
 }

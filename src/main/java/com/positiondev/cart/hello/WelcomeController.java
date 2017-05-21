@@ -20,6 +20,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
@@ -28,11 +30,18 @@ public class WelcomeController {
 
   @Value("${application.message:Hello World}")
   private String message = "Hello World";
+  private final Calendar cal = Calendar.getInstance();
 
   @GetMapping("/")
   public String welcome(Map<String, Object> model) {
     model.put("time", new Date());
     model.put("message", this.message);
+
+    Date moment = cal.getTime();
+    String today = new SimpleDateFormat("MMMM dd, yyyy").format(moment);
+    String now = new SimpleDateFormat("hh:mm a").format(moment);
+    model.put("today", today);
+    model.put("now", now);
     return "welcome";
   }
 

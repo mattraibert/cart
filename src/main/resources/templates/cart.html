@@ -2,12 +2,14 @@
 <h1>Your Cart</h1>
 
 <table>
-  <tr th:each="product : ${cart.products}">
-    <td th:text="${product.title}">Strawberries</td>
-    <td th:text="${product.price.display}" class="number">$23.32</td>
-    <td><a href="product.html" th:href="@{/products/{id}(id=${product.id})}">Learn more...</a></td>
+  <tr th:each="lineItem : ${cart.lineItems}">
+    <td><a href="#" th:href="@{/lineItems/{id}/destroy(id=${lineItem.id})}">x</a> </td>
+    <td th:text="${lineItem.product.title}">Strawberries</td>
+    <td th:text="${lineItem.product.price.display}" class="number">$23.32</td>
+    <td><a href="product.html" th:href="@{/products/{id}(id=${lineItem.product.id})}">Learn more...</a></td>
   </tr>
   <tr th:remove="all">
+    <td><a href="#">x</a> </td>
     <td>Grapes</td>
     <td class="number">$3.99</td>
     <td><a href="product.html">Learn more...</a></td>

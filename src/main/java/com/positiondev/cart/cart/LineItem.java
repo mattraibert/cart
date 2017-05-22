@@ -29,4 +29,12 @@ public class LineItem {
     this.cart = cart;
     this.product = product;
   }
+
+  public Long getId() {
+    return id;
+  }
+
+  public Cart getCart() {
+    return cart;
+  }
 }

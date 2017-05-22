@@ -9,9 +9,8 @@ import javax.persistence.Id;
 
 @Entity
 public class Product {
-
   @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
   private String title;
   private String description;
@@ -40,4 +39,10 @@ public class Product {
   public PersistableMoney getPrice() {
     return price;
   }
+
+  public void setTitle(String title) { this.title = title; }
+
+  public void setDescription(String description) { this.description = description; }
+
+  public void setPrice(Number price) { this.price = PersistableMoney.usd(price); }
 }

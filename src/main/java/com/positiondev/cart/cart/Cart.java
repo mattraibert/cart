@@ -6,6 +6,7 @@ import com.positiondev.cart.util.PersistableMoney;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static javax.persistence.CascadeType.ALL;
 
@@ -35,7 +36,7 @@ public class Cart {
   }
 
   public PersistableMoney getTotal() {
-    return PersistableMoney.usd(0);
+    return PersistableMoney.sum(getProducts().stream().map(Product::getPrice).collect(Collectors.toList()));
   }
 
   public List<Product> getProducts() {

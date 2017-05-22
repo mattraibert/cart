@@ -16,7 +16,7 @@ public class CartController {
   public RedirectView addProduct(@PathVariable("id") Cart cart, @RequestParam(value="productId") Product product) {
     cart.addProduct(product);
     cartController.save(cart);
-    return new RedirectView("/carts/" + cart.getId() + ".json");
+    return new RedirectView("/carts/" + cart.getId());
   }
 
   @GetMapping("/{id}.json")

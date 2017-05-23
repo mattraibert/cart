@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<script src="https://js.stripe.com/v3/"></script>
+<link rel="stylesheet" href="../../static/stripe_config.css" th:href="@{/stripe_config.css}"/>
+
+<form action="../cart.html" th:action="@{/cart/{id}/charge(id=${cart.id})}" method="post" id="payment-form">
+  <div class="form-row">
+    <label for="card-element">
+      Credit or debit card
+    </label>
+    <div id="card-element">
+      <!-- a Stripe Element will be inserted here. -->
+    </div>
+
+    <!-- Used to display form errors -->
+    <div id="card-errors" role="alert"></div>
+  </div>
+
+  <button>Submit Payment</button>
+</form>
+<script src="../../static/stripe_config.js" th:src="@{/stripe_config.js}"></script>
+</html>

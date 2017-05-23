@@ -13,7 +13,7 @@ public class CartController {
   private CartRepository cartController;
 
   @PostMapping("/{id}")
-  public RedirectView addProduct(@PathVariable("id") Cart cart, @RequestParam(value="productId") Product product) {
+  public RedirectView addProduct(@PathVariable("id") Cart cart, @RequestParam(value = "productId") Product product) {
     cart.addProduct(product);
     cartController.save(cart);
     return new RedirectView("/carts/" + cart.getId());
@@ -27,5 +27,10 @@ public class CartController {
   @GetMapping("/{id}")
   public ModelAndView cart(@PathVariable("id") Cart cart) {
     return new ModelAndView("cart", "cart", cart);
+  }
+
+  @GetMapping("/{id}/review")
+  public ModelAndView reviewCart(@PathVariable("id") Cart cart) {
+    return new ModelAndView("cart/review", "cart", cart);
   }
 }

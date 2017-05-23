@@ -1,6 +1,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<form action="#" th:action="@{/products/new}" th:object="${product}" method="post">
+<form action="index.html" th:action="@{/products/new}" th:object="${product}" method="post">
   <p><label> Title: <input type="text" th:field="*{title}"/> </label></p>
   <p><label> description: <textarea th:field="*{description}"></textarea> </label></p>
   <p><label> price: <input type="text" th:field="*{price}"/> </label></p>

@@ -43,4 +43,8 @@ public class PersistableMoney implements Serializable {
   public static PersistableMoney usd(Number amount) {
     return new PersistableMoney(new BigDecimal(amount.toString()), "USD");
   }
+
+  public int getAmountCents() {
+    return getAmount().multiply(BigDecimal.valueOf(100)).intValue();
+  }
 }

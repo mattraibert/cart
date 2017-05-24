@@ -44,16 +44,20 @@ public class CartController {
   }
 
   @PostMapping("/{id}/charge")
-  public RedirectView chargeCart(@PathVariable("id") Cart cart, @RequestParam(value = "stripeToken") String token) throws CardException, APIException, AuthenticationException, InvalidRequestException, APIConnectionException {
+  public RedirectView chargeCart(@PathVariable("id") Cart cart,
+                                 @RequestParam(value = "stripeToken") String token) throws CardException, APIException, AuthenticationException, InvalidRequestException, APIConnectionException {
     Stripe.apiKey = secretKey;
 
     Map<String, Object> params = new HashMap<>();
-    params.put("amount", 1000);
-    params.put("currency", "usd");
-    params.put("description", "Example charge");
-    params.put("source", token);
+    int amountCents = cart.getTotal().getAmountCents();
+    if (amountCents > 0) {
+      params.put("amount", amountCents);
+      params.put("currency", cart.getTotal().getCurrency());
+      params.put("description", "Position Cart #" + cart.getId());
+      params.put("source", token);
 
-    Charge charge = Charge.create(params);
+      Charge charge = Charge.create(params);
+    }
     return new RedirectView("/products");
   }
 }

@@ -1,21 +1,30 @@
 package com.positiondev.cart.cart;
 
 import com.positiondev.cart.product.Product;
+import com.stripe.Stripe;
+import com.stripe.exception.*;
+import com.stripe.model.Charge;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/carts")
 public class CartController {
   @Autowired
-  private CartRepository cartController;
+  private CartRepository cartRepository;
+  @Value("${stripe.secretKey}")
+  private String secretKey;
 
   @PostMapping("/{id}")
   public RedirectView addProduct(@PathVariable("id") Cart cart, @RequestParam(value = "productId") Product product) {
     cart.addProduct(product);
-    cartController.save(cart);
+    cartRepository.save(cart);
     return new RedirectView("/carts/" + cart.getId());
   }
 
@@ -32,5 +41,19 @@ public class CartController {
   @GetMapping("/{id}/review")
   public ModelAndView reviewCart(@PathVariable("id") Cart cart) {
     return new ModelAndView("cart/review", "cart", cart);
+  }
+
+  @PostMapping("/{id}/charge")
+  public RedirectView chargeCart(@PathVariable("id") Cart cart, @RequestParam(value = "stripeToken") String token) throws CardException, APIException, AuthenticationException, InvalidRequestException, APIConnectionException {
+    Stripe.apiKey = secretKey;
+
+    Map<String, Object> params = new HashMap<>();
+    params.put("amount", 1000);
+    params.put("currency", "usd");
+    params.put("description", "Example charge");
+    params.put("source", token);
+
+    Charge charge = Charge.create(params);
+    return new RedirectView("/products");
   }
 }

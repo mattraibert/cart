@@ -33,6 +33,4 @@ dependencies {
 //	compile('org.flywaydb:flyway-core')
 //	compile('org.springframework.boot:spring-boot-starter-mail')
 //	compile('org.springframework.boot:spring-boot-starter-security')
-
-  compile('org.springframework.boot:spring-boot-starter-freemarker')
 }

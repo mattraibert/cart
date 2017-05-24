@@ -3,7 +3,7 @@
 <script src="https://js.stripe.com/v3/"></script>
 <link rel="stylesheet" href="../../static/stripe_config.css" th:href="@{/stripe_config.css}"/>
 
-<form action="../cart.html" th:action="@{/cart/{id}/charge(id=${cart.id})}" method="post" id="payment-form">
+<form action="../cart.html" th:action="@{/carts/{id}/charge(id=${cart.id})}" method="post" id="payment-form">
   <div class="form-row">
     <label for="card-element">
       Credit or debit card

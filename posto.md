@@ -10,3 +10,4 @@ todo
 7. Try view negotiation with: https://spring.io/blog/2013/06/03/content-negotiation-using-views/
 8. Deploy on heroku or aws
 9. Use external tomcat in production
+* http://cloud.spring.io/spring-cloud-vault/spring-cloud-vault.html#vault.config.authentication

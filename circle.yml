@@ -1,0 +1,8 @@
+machine:
+  timezone: America/New York
+  java:
+    version: oraclejdk8
+database:
+  override:
+    - createuser -s -d springboot_user
+    - createdb springboot_db

@@ -18,7 +18,7 @@ import java.util.Map;
 public class CartController {
   @Autowired
   private CartRepository cartRepository;
-  @Value("${stripe.secretKey}")
+  @Value("${stripe.secretkey:sk_test_your_key_here}")
   private String secretKey;
 
   @PostMapping("/{id}")

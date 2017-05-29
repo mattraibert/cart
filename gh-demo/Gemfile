@@ -1,0 +1,11 @@
+source 'https://rubygems.org'
+
+#ruby=jruby-9.1.10.0
+ruby '2.3.3', :engine => 'jruby', :engine_version => '9.1.10.0'
+
+gem 'pry'
+gem 'sinatra'
+gem 'sinatra-contrib'
+gem 'rest-client'
+gem 'json'
+gem 'vault'

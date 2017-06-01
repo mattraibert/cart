@@ -31,9 +31,9 @@ public class CartController {
     return new ModelAndView("cart", "cart", cart);
   }
 
-  @GetMapping("/{id}/review")
+  @GetMapping("/{id}/payment")
   public ModelAndView reviewCart(@PathVariable("id") Cart cart) {
-    return new ModelAndView("cart/review", "cart", cart);
+    return new ModelAndView("cart/payment", "cart", cart);
   }
 
   @PostMapping("/{id}/charge")

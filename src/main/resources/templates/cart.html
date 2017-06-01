@@ -15,7 +15,7 @@
     <td><a href="product.html">Learn more...</a></td>
   </tr>
   <tr><td>Total</td><td th:text="${cart.total.display}">$27.31</td></tr>
-  <tr><td colspan="3"><a href="cart/review.html" th:href="@{/carts/{id}/review(id=${cart.id})}">Checkout</a></td></tr>
+  <tr><td colspan="3"><a href="cart/payment.html" th:href="@{/carts/{id}/payment(id=${cart.id})}">Checkout</a></td></tr>
 </table>
 
 <a href="product/index.html" th:href="@{/products}">Keep shopping</a>

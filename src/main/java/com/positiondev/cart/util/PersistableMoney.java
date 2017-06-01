@@ -47,4 +47,8 @@ public class PersistableMoney implements Serializable {
   public int getAmountCents() {
     return getAmount().multiply(BigDecimal.valueOf(100)).intValue();
   }
+
+  public boolean isZero() {
+    return getAmountCents() <= 0;
+  }
 }

@@ -1,10 +1,7 @@
 package com.positiondev.cart.cart;
 
 import com.positiondev.cart.product.Product;
-import com.stripe.Stripe;
-import com.stripe.exception.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -13,9 +10,9 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequestMapping("/carts")
 public class CartController {
   @Autowired
+  private StripeCharge stripeCharge;
+  @Autowired
   private CartRepository cartRepository;
-  @Value("${stripe.secretkey:sk_test_your_key_here}")
-  private String secretKey;
 
   @PostMapping("/{id}")
   public RedirectView addProduct(@PathVariable("id") Cart cart, @RequestParam(value = "productId") Product product) {
@@ -40,12 +37,10 @@ public class CartController {
   }
 
   @PostMapping("/{id}/charge")
-  public RedirectView chargeCart(@PathVariable("id") Cart cart,
-                                 @RequestParam(value = "stripeToken") String token) throws CardException, APIException, AuthenticationException, InvalidRequestException, APIConnectionException {
-    Stripe.apiKey = secretKey;
-
-    cart.charge(token);
+  public RedirectView chargeCart(@PathVariable("id") Cart cart, @RequestParam(value = "stripeToken") String token) {
+    if (!cart.getTotal().isZero()) {
+      stripeCharge.charge(token, cart);
+    }
     return new RedirectView("/products");
   }
-
 }

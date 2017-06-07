@@ -39,7 +39,7 @@ public class CartController {
   @PostMapping("/{id}/charge")
   public RedirectView chargeCart(@PathVariable("id") Cart cart, @RequestParam(value = "stripeToken") String token) {
     if (!cart.getTotal().isZero()) {
-      stripeCharge.charge(token, cart);
+      stripeCharge.charge(token, cart.receipt());
     }
     return new RedirectView("/products");
   }

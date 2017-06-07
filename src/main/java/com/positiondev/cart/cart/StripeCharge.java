@@ -14,12 +14,12 @@ class StripeCharge {
   @Value("${stripe.secretkey:sk_test_your_key_here}")
   private String secretKey;
 
-  void charge(String token, Cart cart) {
+  void charge(String token, Receipt receipt) {
     Stripe.apiKey = secretKey;
     Map<String, Object> params = new HashMap<>();
-    params.put("amount", cart.getTotal().getAmountCents());
-    params.put("currency", cart.getTotal().getCurrency());
-    params.put("description", "Position Cart #" + cart.getId());
+    params.put("amount", receipt.getTotal().getAmountCents());
+    params.put("currency", receipt.getTotal().getCurrency());
+    params.put("description", receipt.getDescription());
     params.put("source", token);
 
     try {

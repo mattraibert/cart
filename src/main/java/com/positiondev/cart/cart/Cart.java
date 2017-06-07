@@ -23,6 +23,10 @@ public class Cart {
   public Cart() {
   }
 
+  public Receipt receipt() {
+    return new Receipt(this.getTotal(), "Position Cart #" + this.getId());
+  }
+
   public void addProduct(Product product) {
     lineItems.add(new LineItem(this, product));
   }
@@ -42,5 +46,4 @@ public class Cart {
   public List<Product> getProducts() {
     return Lists.transform(lineItems, LineItem::getProduct);
   }
-
 }

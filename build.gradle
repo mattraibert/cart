@@ -1,15 +1,18 @@
 buildscript {
   repositories {
     mavenCentral()
+    jcenter()
   }
   dependencies {
     classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+    classpath("com.github.deathman92.plugin:hibernate-schema-gradle-plugin:1.0.0")
   }
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'hibernate-schema-generate' // or 'com.github.deathman92.plugin.hibernate-schema-generate'
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -33,4 +36,13 @@ dependencies {
 //	compile('org.flywaydb:flyway-core')
 //	compile('org.springframework.boot:spring-boot-starter-mail')
 //	compile('org.springframework.boot:spring-boot-starter-security')
+}
+
+generateSchema {
+  outputDir = file('src/main/resources/db/schema')
+  outputFileName = 'schema.ddl'
+  packageNames = ['com.positiondev.cart']
+  dialect = 'org.hibernate.dialect.PostgreSQLDialect'
+  implicitStrategy = 'org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl'
+  physicalStrategy = 'org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl'
 }

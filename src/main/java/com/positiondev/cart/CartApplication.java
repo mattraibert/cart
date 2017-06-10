@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
-@PropertySource("classpath:secret/secret.properties")
+@PropertySource(value = "classpath:secret/secret.properties", ignoreResourceNotFound = true)
 public class CartApplication {
   private static final Logger log = LoggerFactory.getLogger(CartApplication.class);
 

@@ -1,43 +1,43 @@
 
-    alter table LineItem 
-        drop constraint FKifw18ld48qb0f67gu61r2t333;
+    alter table line_item 
+        drop constraint FKd62frm76cgt1fpgdjml3m1mh1;
 
-    alter table LineItem 
-        drop constraint FKroor0huyabx3dwcd1mc5ldmi2;
+    alter table line_item 
+        drop constraint FK237t8tbj9haibqe7wafj4t54x;
 
-    drop table if exists Cart cascade;
+    drop table if exists cart cascade;
 
-    drop table if exists Customer cascade;
+    drop table if exists customer cascade;
 
-    drop table if exists LineItem cascade;
+    drop table if exists line_item cascade;
 
-    drop table if exists Product cascade;
+    drop table if exists product cascade;
 
-    drop table if exists Receipt cascade;
+    drop table if exists receipt cascade;
 
     drop sequence if exists hibernate_sequence;
 create sequence hibernate_sequence start 1 increment 1;
 
-    create table Cart (
+    create table cart (
         id int8 not null,
         primary key (id)
     );
 
-    create table Customer (
+    create table customer (
         id int8 not null,
-        firstName varchar(255),
-        lastName varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
         primary key (id)
     );
 
-    create table LineItem (
+    create table line_item (
         id int8 not null,
-        cartId int8 not null,
-        productId int8 not null,
+        cart_id int8 not null,
+        product_id int8 not null,
         primary key (id)
     );
 
-    create table Product (
+    create table product (
         id int8 not null,
         description varchar(255),
         amount numeric(19, 2),
@@ -46,7 +46,7 @@ create sequence hibernate_sequence start 1 increment 1;
         primary key (id)
     );
 
-    create table Receipt (
+    create table receipt (
         id int8 not null,
         description varchar(255),
         amount numeric(19, 2),
@@ -54,12 +54,12 @@ create sequence hibernate_sequence start 1 increment 1;
         primary key (id)
     );
 
-    alter table LineItem 
-        add constraint FKifw18ld48qb0f67gu61r2t333 
-        foreign key (cartId) 
-        references Cart;
+    alter table line_item 
+        add constraint FKd62frm76cgt1fpgdjml3m1mh1 
+        foreign key (cart_id) 
+        references cart;
 
-    alter table LineItem 
-        add constraint FKroor0huyabx3dwcd1mc5ldmi2 
-        foreign key (productId) 
-        references Product;
+    alter table line_item 
+        add constraint FK237t8tbj9haibqe7wafj4t54x 
+        foreign key (product_id) 
+        references product;

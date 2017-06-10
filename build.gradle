@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'hibernate-schema-generate' // or 'com.github.deathman92.plugin.hibernate-schema-generate'
+apply plugin: 'hibernate-schema-generate'
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -29,11 +29,12 @@ dependencies {
       "org.springframework.boot:spring-boot-devtools",
       'org.springframework.boot:spring-boot-starter-thymeleaf',
       "com.stripe:stripe-java:4.7.0",
-      "org.jetbrains:annotations:15.0"
+      "org.jetbrains:annotations:15.0",
+      'org.flywaydb:flyway-core'
+
   runtime 'org.postgresql:postgresql'
   testCompile 'org.springframework.boot:spring-boot-starter-test'
 
-//	compile('org.flywaydb:flyway-core')
 //	compile('org.springframework.boot:spring-boot-starter-mail')
 //	compile('org.springframework.boot:spring-boot-starter-security')
 }
@@ -43,6 +44,6 @@ generateSchema {
   outputFileName = 'schema.ddl'
   packageNames = ['com.positiondev.cart']
   dialect = 'org.hibernate.dialect.PostgreSQLDialect'
-  implicitStrategy = 'org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl'
-  physicalStrategy = 'org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl'
+  implicitStrategy = 'org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy'
+  physicalStrategy = 'org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy'
 }

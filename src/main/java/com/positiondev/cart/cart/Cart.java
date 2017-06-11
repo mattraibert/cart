@@ -2,6 +2,7 @@ package com.positiondev.cart.cart;
 
 import com.google.common.collect.Lists;
 import com.positiondev.cart.product.Product;
+import com.positiondev.cart.receipt.Receipt;
 import com.positiondev.cart.util.PersistableMoney;
 
 import javax.persistence.*;
@@ -20,8 +21,7 @@ public class Cart {
   @OneToMany(cascade = ALL, mappedBy = "cart")
   private List<LineItem> lineItems;
 
-  public Cart() {
-  }
+  public Cart() {}
 
   public Receipt receipt() {
     return new Receipt(this.getTotal(), "Position Cart #" + this.getId());

@@ -4,17 +4,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Customer {
-
   @Id
   @GeneratedValue(strategy=GenerationType.AUTO)
   private Long id;
-  private String firstName;
-  private String lastName;
+  @NotNull private String firstName;
+  @NotNull private String lastName;
 
-  protected Customer() {}
+  @SuppressWarnings("unused") private Customer() {}
 
   public Customer(String firstName, String lastName) {
     this.firstName = firstName;

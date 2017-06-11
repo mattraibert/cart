@@ -3,6 +3,7 @@ package com.positiondev.cart.cart;
 import com.positiondev.cart.product.Product;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class LineItem {
@@ -10,16 +11,10 @@ public class LineItem {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
-  @ManyToOne
-  @JoinColumn(name = "cartId", nullable = false)
-  private Cart cart;
+  @NotNull @ManyToOne(optional = false) private Cart cart;
+  @NotNull @ManyToOne(optional = false) private Product product;
 
-  @ManyToOne
-  @JoinColumn(name = "productId", nullable = false)
-  private Product product;
-
-  @SuppressWarnings("unused")
-  LineItem() {}
+  @SuppressWarnings("unused") private LineItem() {}
 
   public Product getProduct() {
     return product;

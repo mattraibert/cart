@@ -1,4 +1,4 @@
-package com.positiondev.cart.cart;
+package com.positiondev.cart.receipt;
 
 import com.positiondev.cart.util.PersistableMoney;
 
@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Receipt {
@@ -13,8 +14,8 @@ public class Receipt {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
-  private PersistableMoney total;
-  private String description;
+  @NotNull private PersistableMoney total;
+  @NotNull private String description;
 
   public Receipt(PersistableMoney total, String description) {
     this.total = total;

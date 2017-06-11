@@ -1,5 +1,6 @@
 package com.positiondev.cart.cart;
 
+import com.positiondev.cart.receipt.Receipt;
 import com.stripe.Stripe;
 import com.stripe.exception.*;
 import com.stripe.model.Charge;

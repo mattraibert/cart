@@ -13,6 +13,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'hibernate-schema-generate'
+apply plugin: 'groovy'
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -31,12 +32,11 @@ dependencies {
       "com.stripe:stripe-java:4.7.0",
       "org.jetbrains:annotations:15.0",
       'org.flywaydb:flyway-core'
-
+  testCompile "org.spockframework:spock-core:1.1-groovy-2.4"
   runtime 'org.postgresql:postgresql'
   testCompile 'org.springframework.boot:spring-boot-starter-test'
-
-//	compile('org.springframework.boot:spring-boot-starter-mail')
-//	compile('org.springframework.boot:spring-boot-starter-security')
+  testCompile 'org.codehaus.groovy:groovy-all:2.4.11'
+  testCompile group: 'org.spockframework', name: 'spock-spring', version: '1.1-groovy-2.4'
 }
 
 generateSchema {
@@ -47,3 +47,5 @@ generateSchema {
   implicitStrategy = 'org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy'
   physicalStrategy = 'org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy'
 }
+
+ext['spock.version'] = '1.1'

@@ -6,6 +6,7 @@ import com.positiondev.cart.receipt.Receipt;
 import com.positiondev.cart.util.PersistableMoney;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,7 +20,7 @@ public class Cart {
   private Long id;
 
   @OneToMany(cascade = ALL, mappedBy = "cart")
-  private List<LineItem> lineItems;
+  private List<LineItem> lineItems = new ArrayList<>();
 
   public Cart() {}
 

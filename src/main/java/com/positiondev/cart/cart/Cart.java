@@ -14,7 +14,6 @@ import static javax.persistence.CascadeType.ALL;
 
 @Entity
 public class Cart {
-
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
